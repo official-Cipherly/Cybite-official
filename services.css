@@ -33,20 +33,59 @@ body {
 .button {
   width: 17rem;
   text-align: center;
-  padding: 1rem 1.5rem;
+  padding: .7rem 2rem;
   color: white;
   font-size: 1.1rem;
-  margin: 1rem auto;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   box-sizing: content-box;
-  border-radius: 16px;
+  border-radius: 12px;
   background: linear-gradient(90deg, #FF0083 0%, #A10057 100%);
   cursor: pointer;
+  margin: auto;
+  border: 3px solid transparent;
 }
 
 .button:hover {
-  transform: scale(1.1);
-  background: linear-gradient(90deg, #A10057 0%, #FF0083 100%);
+  border: 3px solid white;
+}
+
+#bottom-button {
+  display: block;
+  margin: auto;
+  margin-bottom: 4rem;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  width: 17rem;
+  text-align: center;
+  padding: .7rem 2rem;
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  box-sizing: content-box;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #FF0083 0%, #A10057 100%);
+}
+
+#bottom-button::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 3px solid white;
+  border-radius: 11px;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+}
+
+#bottom-button:hover::before {
+  opacity: 1;
+  box-shadow: 0px 4px 8px 0px rgba(255, 0, 131, 0.15);
 }
 
 section {
@@ -58,7 +97,7 @@ section {
 
 .section-heading {
   font-size: 3rem;
-  font-weight: 800;
+  font-weight: 500;
   text-align: center;
   margin: auto;
   width: auto;
@@ -154,8 +193,8 @@ section {
 /* ***************************************HOME SECTION content*********************************** */
 
 .home {
-  height: 100vh;
-  max-height: 700px;
+  height: 115vh;
+  max-height: 730px;
   width: 100%;
   max-width: 1600px;
   padding: 0;
@@ -190,26 +229,12 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(.4);
 }
-
-/* .home .container::before {
-  content: "";
-  background-image: url('images/programming-background-with-person-working-with-codes-computer.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-clip: content-box;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  filter: brightness(0.5);
-} */
 
 .home .home-text {
   position: absolute;
-  top: 60%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -238,14 +263,8 @@ section {
 
 
 .home .home-text .button {
-  margin: auto;
   margin-top: 3rem;
 }
-
-.home .home-text .button:hover {
-  transform: scale(1.1);
-}
-
 
 /* ******************************************SERVICES SECTION************************* */
 
@@ -491,6 +510,11 @@ section {
 
 @media (max-width : 800px) {
 
+  .home {
+    height: calc(100vh - var(--header-height));
+    max-height: calc(608px - 5rem);
+  }
+
   .App-Dev {
     flex-wrap: wrap-reverse;
   }
@@ -690,6 +714,10 @@ section {
 }
 
 @media screen and (max-width:377px) {
+
+  .home .home-text {
+    top: 60% ;
+  }
 
   .milestone img {
     width: 5rem;
